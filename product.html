@@ -1,46 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Product details for Urban Revival Thrift." />
-  <title>Urban Revival Thrift | Product</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body data-page="product">
-  <header class="site-header">
-    <nav class="container nav">
-      <a href="index.html" class="brand">Urban Revival Thrift</a>
-      <button class="menu-toggle" aria-label="Toggle menu">☰</button>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="shop.html">Shop</a></li>
-        <li><a href="cart.html">Cart <span class="cart-count">0</span></a></li>
-        <li><a href="account.html">Account</a></li>
-        <li><a href="admin.html">Admin</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main class="section container">
-    <div id="product-detail" class="product-detail-layout"></div>
-
-    <section class="section reviews-section">
-      <h2>Reviews</h2>
-      <div class="reviews-list">
-        <article class="card"><p>Great quality and exactly as shown.</p><h4>- Alex</h4></article>
-        <article class="card"><p>Fast shipping, fits perfectly.</p><h4>- Nina</h4></article>
-        <article class="card"><p>Love the vibe. Will order again.</p><h4>- Tunde</h4></article>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Product details for THRIFT BY B thrift fashion items." />
+    <title>Product Details | THRIFT BY B</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body data-page="product">
+    <header class="navbar">
+      <div class="container nav-wrap">
+        <a class="brand" href="index.html">THRIFT <span>BY B</span></a>
+        <nav class="nav-links" id="navLinks">
+          <a href="index.html">Home</a>
+          <a href="shop.html">Shop</a>
+          <a href="cart.html">Cart</a>
+          <a href="checkout.html">Checkout</a>
+          <a href="account.html" id="userChip">My Account</a>
+          <a href="admin-login.html">Admin</a>
+        </nav>
+        <div class="nav-actions">
+          <a class="cart-chip" href="cart.html">Cart <span data-cart-count>0</span></a>
+          <button class="hamburger" id="hamburgerBtn"><span></span><span></span><span></span></button>
+        </div>
       </div>
-    </section>
-  </main>
+    </header>
 
-  <footer class="site-footer compact-footer">
-    <div class="container">
-      <p>© 2026 Urban Revival Thrift</p>
-    </div>
-  </footer>
+    <main class="section">
+      <div class="container product-page-grid">
+        <section class="product-gallery fade-in">
+          <img id="productMainImage" class="product-main-image" src="" alt="Product image" />
+          <div id="productThumbnails" class="thumb-row"></div>
+        </section>
+        <section class="panel fade-in">
+          <span class="badge" id="productCondition"></span>
+          <h1 id="productName" class="section-title"></h1>
+          <p id="productCategory" class="section-subtitle"></p>
+          <p id="productPrice" class="price"></p>
+          <p id="productDescription"></p>
+          <div class="filter-group">
+            <label for="productSize">Select Size</label>
+            <select id="productSize"></select>
+          </div>
+          <button id="addToCartProduct" class="btn btn-primary">Add to Cart</button>
+        </section>
+      </div>
+    </main>
 
-  <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>

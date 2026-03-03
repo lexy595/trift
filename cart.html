@@ -1,62 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Shopping cart for Urban Revival Thrift." />
-  <title>Urban Revival Thrift | Cart</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body data-page="cart">
-  <header class="site-header">
-    <nav class="container nav">
-      <a href="index.html" class="brand">Urban Revival Thrift</a>
-      <button class="menu-toggle" aria-label="Toggle menu">☰</button>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="shop.html">Shop</a></li>
-        <li><a href="cart.html" class="active">Cart <span class="cart-count">0</span></a></li>
-        <li><a href="account.html">Account</a></li>
-        <li><a href="admin.html">Admin</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main class="section container">
-    <div class="section-heading">
-      <h1>Your Cart</h1>
-      <p>Review your pieces before checkout.</p>
-    </div>
-
-    <div class="cart-layout">
-      <section>
-        <div id="cart-items" class="cart-items"></div>
-      </section>
-
-      <aside class="card summary-box">
-        <h3>Order Summary</h3>
-        <div class="summary-row"><span>Subtotal</span><span id="cart-subtotal">$0.00</span></div>
-        <div class="summary-row"><span>Shipping</span><span id="cart-shipping">$0.00</span></div>
-        <div class="summary-row"><span>Discount</span><span id="cart-discount">-$0.00</span></div>
-        <div class="summary-row total"><span>Total</span><span id="cart-total">$0.00</span></div>
-
-        <div class="coupon-wrap">
-          <input type="text" id="coupon-code" placeholder="Coupon code" />
-          <button id="apply-coupon" class="btn btn-dark">Apply</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Manage your THRIFT BY B cart, quantities, coupon, and delivery." />
+    <title>Cart | THRIFT BY B</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body data-page="cart">
+    <header class="navbar">
+      <div class="container nav-wrap">
+        <a class="brand" href="index.html">THRIFT <span>BY B</span></a>
+        <nav class="nav-links" id="navLinks">
+          <a href="index.html">Home</a>
+          <a href="shop.html">Shop</a>
+          <a class="active" href="cart.html">Cart</a>
+          <a href="checkout.html">Checkout</a>
+          <a href="account.html" id="userChip">My Account</a>
+          <a href="admin-login.html">Admin</a>
+        </nav>
+        <div class="nav-actions">
+          <a class="cart-chip" href="cart.html">Cart <span data-cart-count>0</span></a>
+          <button class="hamburger" id="hamburgerBtn"><span></span><span></span><span></span></button>
         </div>
-        <p class="muted">Use <strong>THRIFT10</strong> for 10% off.</p>
+      </div>
+    </header>
 
-        <a href="checkout.html" class="btn btn-primary full">Proceed to Checkout</a>
-      </aside>
-    </div>
-  </main>
+    <main class="section">
+      <div class="container two-col">
+        <section class="panel fade-in">
+          <h1 class="section-title">Your Cart</h1>
+          <div id="cartList" class="cart-list"></div>
+        </section>
+        <aside class="panel fade-in">
+          <h2>Order Summary</h2>
+          <div id="cartNotice"></div>
+          <div class="filter-group">
+            <label for="couponCode">Coupon code</label>
+            <input id="couponCode" type="text" placeholder="FEM10" />
+            <button id="applyCoupon" class="btn btn-light" type="button">Apply Coupon</button>
+          </div>
+          <div class="filter-group">
+            <label for="cartDeliveryOption">Delivery Option</label>
+            <select id="cartDeliveryOption">
+              <option value="lagos_pickup">Lagos Pickup (₦0)</option>
+              <option value="lagos_delivery">Lagos Delivery (₦2,500)</option>
+              <option value="nationwide_delivery">Nationwide Delivery (₦5,000)</option>
+            </select>
+          </div>
+          <div class="summary-line"><span>Subtotal</span><strong id="cartSubtotal">₦0</strong></div>
+          <div class="summary-line"><span>Discount</span><strong id="cartDiscount">₦0</strong></div>
+          <div class="summary-line"><span>Delivery</span><strong id="cartDeliveryFee">₦0</strong></div>
+          <div class="summary-line total"><span>Total</span><strong id="cartTotal">₦0</strong></div>
+          <button id="goCheckout" class="btn btn-primary full">Proceed to Checkout</button>
+        </aside>
+      </div>
+    </main>
 
-  <footer class="site-footer compact-footer">
-    <div class="container">
-      <p>© 2026 Urban Revival Thrift</p>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>

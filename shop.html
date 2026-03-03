@@ -1,89 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Shop curated thrift products from Urban Revival Thrift." />
-  <title>Urban Revival Thrift | Shop</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body data-page="shop">
-  <header class="site-header">
-    <nav class="container nav">
-      <a href="index.html" class="brand">Urban Revival Thrift</a>
-      <button class="menu-toggle" aria-label="Toggle menu">☰</button>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="shop.html" class="active">Shop</a></li>
-        <li><a href="cart.html">Cart <span class="cart-count">0</span></a></li>
-        <li><a href="account.html">Account</a></li>
-        <li><a href="admin.html">Admin</a></li>
-      </ul>
-    </nav>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Shop female thrift clothing in Nigeria: tops, dresses, skirts, jackets, and accessories." />
+    <title>Shop | THRIFT BY B</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body data-page="shop">
+    <header class="navbar">
+      <div class="container nav-wrap">
+        <a class="brand" href="index.html">THRIFT <span>BY B</span></a>
+        <nav class="nav-links" id="navLinks">
+          <a href="index.html">Home</a>
+          <a class="active" href="shop.html">Shop</a>
+          <a href="cart.html">Cart</a>
+          <a href="checkout.html">Checkout</a>
+          <a href="account.html" id="userChip">My Account</a>
+          <a href="admin-login.html">Admin</a>
+        </nav>
+        <div class="nav-actions">
+          <a class="cart-chip" href="cart.html">Cart <span data-cart-count>0</span></a>
+          <button class="hamburger" id="hamburgerBtn"><span></span><span></span><span></span></button>
+        </div>
+      </div>
+    </header>
 
-  <main class="section container">
-    <div class="section-heading">
-      <h1>Shop All Pieces</h1>
-      <p>Find vintage staples and rare streetwear finds.</p>
-    </div>
+    <main class="section">
+      <div class="container">
+        <div class="shop-controls">
+          <div>
+            <h1 class="section-title">Shop</h1>
+            <p id="resultCount">0 items</p>
+          </div>
+          <div>
+            <button class="btn btn-light" id="toggleFilters">Toggle Filters</button>
+            <select id="sortProducts">
+              <option value="default">Sort: Default</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="name-az">Name: A to Z</option>
+            </select>
+          </div>
+        </div>
 
-    <div class="shop-layout">
-      <aside class="filters card">
-        <h3>Filter Products</h3>
+        <section class="shop-layout">
+          <aside class="filter-panel" id="filterPanel">
+            <h3>Filter Products</h3>
+            <div class="filter-group">
+              <label for="maxPrice">Max Price: <strong id="maxPriceValue"></strong></label>
+              <input id="maxPrice" type="range" min="5000" max="30000" step="500" value="30000" />
+            </div>
+            <div class="filter-group">
+              <label for="filterCategory">Category</label>
+              <select id="filterCategory">
+                <option value="">All Categories</option>
+                <option value="Tops">Tops</option>
+                <option value="Dresses">Dresses</option>
+                <option value="Skirts">Skirts</option>
+                <option value="Jackets">Jackets</option>
+                <option value="Accessories">Accessories</option>
+              </select>
+            </div>
+            <div class="filter-group">
+              <label for="filterSize">Size</label>
+              <select id="filterSize">
+                <option value="">All Sizes</option>
+                <option value="XS">XS</option>
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+              </select>
+            </div>
+          </aside>
+          <div class="grid-products" id="shopProducts"></div>
+        </section>
+      </div>
+    </main>
 
-        <label for="filter-price">Max Price ($)</label>
-        <input type="range" id="filter-price" min="10" max="200" value="200" />
-        <p>Up to: $<span id="price-value">200</span></p>
-
-        <label for="filter-category">Category</label>
-        <select id="filter-category">
-          <option value="all">All</option>
-          <option value="Tops">Tops</option>
-          <option value="Bottoms">Bottoms</option>
-          <option value="Jackets">Jackets</option>
-          <option value="Vintage">Vintage</option>
-          <option value="Accessories">Accessories</option>
-        </select>
-
-        <label for="filter-size">Size</label>
-        <select id="filter-size">
-          <option value="all">All</option>
-          <option value="XS">XS</option>
-          <option value="S">S</option>
-          <option value="M">M</option>
-          <option value="L">L</option>
-          <option value="XL">XL</option>
-        </select>
-
-        <label for="filter-gender">Gender</label>
-        <select id="filter-gender">
-          <option value="all">All</option>
-          <option value="Men">Men</option>
-          <option value="Women">Women</option>
-          <option value="Unisex">Unisex</option>
-        </select>
-
-        <label for="sort-products">Sort By</label>
-        <select id="sort-products">
-          <option value="newest">Newest</option>
-          <option value="low-high">Price: Low to High</option>
-          <option value="high-low">Price: High to Low</option>
-        </select>
-      </aside>
-
-      <section>
-        <div id="shop-grid" class="product-grid"></div>
-      </section>
-    </div>
-  </main>
-
-  <footer class="site-footer compact-footer">
-    <div class="container">
-      <p>© 2026 Urban Revival Thrift</p>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>

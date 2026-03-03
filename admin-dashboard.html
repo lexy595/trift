@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="THRIFT BY B admin dashboard for product and order management." />
+    <title>Admin Dashboard | THRIFT BY B</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body data-page="admin-dashboard">
+    <div class="admin-layout">
+      <aside class="admin-side">
+        <h2>THRIFT BY B</h2>
+        <a href="#stats">Dashboard</a>
+        <a href="#products">Products</a>
+        <a href="#orders">Orders</a>
+        <button id="adminLogout" class="btn btn-light" type="button">Logout</button>
+      </aside>
+
+      <main class="admin-main">
+        <section id="stats" class="fade-in">
+          <h1 class="section-title">Admin Dashboard</h1>
+          <div class="stat-grid">
+            <article class="stat-card">
+              <h4>Total Revenue</h4>
+              <p id="statRevenue">₦0</p>
+            </article>
+            <article class="stat-card">
+              <h4>Total Orders</h4>
+              <p id="statOrders">0</p>
+            </article>
+            <article class="stat-card">
+              <h4>Products</h4>
+              <p id="statProducts">0</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="products" class="panel section fade-in">
+          <h2>Add Product</h2>
+          <form id="adminProductForm" class="form-grid">
+            <div>
+              <label for="productName">Product Name</label>
+              <input id="productName" name="productName" type="text" required />
+            </div>
+            <div>
+              <label for="productPrice">Price (₦)</label>
+              <input id="productPrice" name="productPrice" type="number" min="1000" required />
+            </div>
+            <div>
+              <label for="productCategory">Category</label>
+              <select id="productCategory" name="productCategory">
+                <option value="Tops">Tops</option>
+                <option value="Dresses">Dresses</option>
+                <option value="Skirts">Skirts</option>
+                <option value="Jackets">Jackets</option>
+                <option value="Accessories">Accessories</option>
+              </select>
+            </div>
+            <div>
+              <label for="productCondition">Condition</label>
+              <select id="productCondition" name="productCondition">
+                <option value="Like New">Like New</option>
+                <option value="Vintage">Vintage</option>
+              </select>
+            </div>
+            <div class="full">
+              <label for="productSizes">Sizes (comma separated)</label>
+              <input id="productSizes" name="productSizes" type="text" placeholder="XS,S,M,L,XL" required />
+            </div>
+            <div class="full">
+              <label for="productImages">Image URLs (comma separated)</label>
+              <textarea id="productImages" name="productImages" rows="2"></textarea>
+            </div>
+            <div class="full">
+              <label for="productDescription">Description</label>
+              <textarea id="productDescription" name="productDescription" rows="3" required></textarea>
+            </div>
+            <div class="full"><button class="btn btn-primary" type="submit">Add Product</button></div>
+          </form>
+
+          <h3>Manage Products</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Category</th>
+                  <th>Price</th>
+                  <th>Sizes</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="adminProductsBody"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="orders" class="panel section fade-in">
+          <h2>Orders</h2>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Order ID</th>
+                  <th>Date</th>
+                  <th>Customer</th>
+                  <th>Items</th>
+                  <th>Delivery</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody id="adminOrdersBody"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

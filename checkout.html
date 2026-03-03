@@ -1,76 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Checkout at Urban Revival Thrift." />
-  <title>Urban Revival Thrift | Checkout</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body data-page="checkout">
-  <header class="site-header">
-    <nav class="container nav">
-      <a href="index.html" class="brand">Urban Revival Thrift</a>
-      <button class="menu-toggle" aria-label="Toggle menu">☰</button>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="shop.html">Shop</a></li>
-        <li><a href="cart.html">Cart <span class="cart-count">0</span></a></li>
-        <li><a href="account.html">Account</a></li>
-        <li><a href="admin.html">Admin</a></li>
-      </ul>
-    </nav>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Checkout securely with Paystack demo for THRIFT BY B." />
+    <title>Checkout | THRIFT BY B</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body data-page="checkout">
+    <header class="navbar">
+      <div class="container nav-wrap">
+        <a class="brand" href="index.html">THRIFT <span>BY B</span></a>
+        <nav class="nav-links" id="navLinks">
+          <a href="index.html">Home</a>
+          <a href="shop.html">Shop</a>
+          <a href="cart.html">Cart</a>
+          <a class="active" href="checkout.html">Checkout</a>
+          <a href="account.html" id="userChip">My Account</a>
+          <a href="admin-login.html">Admin</a>
+        </nav>
+        <div class="nav-actions">
+          <a class="cart-chip" href="cart.html">Cart <span data-cart-count>0</span></a>
+          <button class="hamburger" id="hamburgerBtn"><span></span><span></span><span></span></button>
+        </div>
+      </div>
+    </header>
 
-  <main class="section container">
-    <div class="section-heading">
-      <h1>Checkout</h1>
-      <p>Secure your selected thrift pieces.</p>
-    </div>
+    <main class="section">
+      <div class="container two-col">
+        <section class="panel fade-in">
+          <h1 class="section-title">Checkout</h1>
+          <div id="checkoutNotice"></div>
+          <form id="checkoutForm" class="form-grid">
+            <div>
+              <label for="fullName">Full Name</label>
+              <input id="fullName" name="fullName" type="text" required />
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" required />
+            </div>
+            <div>
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" type="tel" required />
+            </div>
+            <div class="full">
+              <label for="address">Shipping Address</label>
+              <textarea id="address" name="address" rows="3" required></textarea>
+            </div>
+            <div class="full">
+              <label for="deliveryOption">Delivery Option</label>
+              <select id="deliveryOption" name="deliveryOption">
+                <option value="lagos_pickup">Lagos Pickup</option>
+                <option value="lagos_delivery">Lagos Delivery</option>
+                <option value="nationwide_delivery">Nationwide Delivery</option>
+              </select>
+            </div>
+            <div class="full">
+              <button class="btn btn-primary" type="submit">Pay with Paystack</button>
+            </div>
+          </form>
+        </section>
+        <aside class="panel fade-in">
+          <h2>Order Summary</h2>
+          <div id="checkoutSummary"></div>
+          <div class="summary-line total">
+            <span>Total</span>
+            <strong id="checkoutTotal">₦0</strong>
+          </div>
+        </aside>
+      </div>
+    </main>
 
-    <div id="checkout-wrapper" class="checkout-layout">
-      <form id="checkout-form" class="card checkout-form">
-        <h3>Customer Details</h3>
-        <input type="text" id="fullName" placeholder="Full Name" required />
-        <input type="email" id="email" placeholder="Email" required />
-        <input type="tel" id="phone" placeholder="Phone" required />
-
-        <h3>Shipping Address</h3>
-        <input type="text" id="address" placeholder="Street Address" required />
-        <input type="text" id="city" placeholder="City" required />
-        <input type="text" id="state" placeholder="State/Region" required />
-        <input type="text" id="zip" placeholder="ZIP / Postal Code" required />
-
-        <h3>Delivery Method</h3>
-        <label><input type="radio" name="delivery" value="Standard (3-5 days)" checked /> Standard (3-5 days)</label>
-        <label><input type="radio" name="delivery" value="Express (1-2 days)" /> Express (1-2 days)</label>
-
-        <h3>Payment Method (Demo)</h3>
-        <label><input type="radio" name="payment" value="Stripe" checked /> Stripe</label>
-        <label><input type="radio" name="payment" value="PayPal" /> PayPal</label>
-
-        <button type="submit" class="btn btn-primary full">Place Order</button>
-      </form>
-
-      <aside class="card summary-box">
-        <h3>Order Summary</h3>
-        <div id="checkout-items"></div>
-        <div class="summary-row"><span>Subtotal</span><span id="checkout-subtotal">$0.00</span></div>
-        <div class="summary-row"><span>Shipping</span><span id="checkout-shipping">$0.00</span></div>
-        <div class="summary-row"><span>Discount</span><span id="checkout-discount">-$0.00</span></div>
-        <div class="summary-row total"><span>Total</span><span id="checkout-total">$0.00</span></div>
-      </aside>
-    </div>
-
-    <section id="order-confirmation" class="card hidden"></section>
-  </main>
-
-  <footer class="site-footer compact-footer">
-    <div class="container">
-      <p>© 2026 Urban Revival Thrift</p>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="script.js"></script>
+  </body>
 </html>
